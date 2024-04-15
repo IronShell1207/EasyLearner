@@ -12,16 +12,10 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets\Images\reg_jap.jpg" />
-    <None Remove="Resources\ColorDictionary.xaml" />
-    <None Remove="Resources\FontDictionary.xaml" />
-    <None Remove="Resources\GeometryIconsDictionary.xaml" />
-    <None Remove="Resources\ImageDictionary.xaml" />
-    <None Remove="Styles\ButtonsStylesDictionary.xaml" />
-    <None Remove="Styles\FlatStylesDictionary.xaml" />
-    <None Remove="Styles\GenericStylesDictionary.xaml" />
-    <None Remove="Styles\TextStylesDictionary.xaml" />
-    <None Remove="Views\Pages\MainPage.xaml" />
+    <Page Remove="Resources\ColorDictionary.xaml" />
+    <Page Remove="Resources\FontDictionary.xaml" />
+    <Page Remove="Resources\GeometryIconsDictionary.xaml" />
+    <Page Remove="Resources\ImageDictionary.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,45 +68,27 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\NewFolder\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SysHelpers\SysHelpers.csproj" />
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Assets\Images\reg_jap.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Resources\ColorDictionary.xaml">
+    <None Update="Resources\ColorDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\FontDictionary.xaml">
+    </None>
+    <None Update="Resources\FontDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\GeometryIconsDictionary.xaml">
+    </None>
+    <None Update="Resources\GeometryIconsDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Resources\ImageDictionary.xaml">
+    </None>
+    <None Update="Resources\ImageDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Styles\ButtonsStylesDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Styles\FlatStylesDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Styles\GenericStylesDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Styles\TextStylesDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </None>
   </ItemGroup>
 
   <!-- 

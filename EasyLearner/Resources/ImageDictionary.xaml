@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:AudioConverter.Resources">
+
+	<BitmapImage x:Key="BlinkImage" UriSource="/Assets/Images/blink.png" />
+	<BitmapImage x:Key="MainBackgroundImage" UriSource="/Assets/Images/reg_jap.jpg" />
+
+	<BitmapImage x:Key="ImportFilesImage" UriSource="/Assets/Icons/import-files.png" />
+</ResourceDictionary>

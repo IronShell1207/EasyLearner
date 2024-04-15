@@ -1,5 +1,6 @@
-﻿// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+﻿
+using Microsoft.Extensions.DependencyInjection;
+using Utils.Helpers;
 
 namespace EasyLearner
 {
@@ -11,6 +12,9 @@ namespace EasyLearner
 	using Microsoft.UI.Xaml.Media;
 	using Microsoft.UI.Xaml.Navigation;
 	using Microsoft.UI.Xaml.Shapes;
+	using Serilog.Sinks.SystemConsole.Themes;
+	using Serilog;
+	using SysHelpers;
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
@@ -20,12 +24,19 @@ namespace EasyLearner
 	using Windows.ApplicationModel.Activation;
 	using Windows.Foundation;
 	using Windows.Foundation.Collections;
+	using System.Threading.Tasks;
+	using EasyLearner.ViewModels;
 
 	/// <summary>
 	/// Provides application-specific behavior to supplement the default Application class.
 	/// </summary>
 	public partial class App : Application
 	{
+		public static IServiceProvider ServiceProvider { get; private set; }
+		public static MainWindow MainWindow { get; private set; }
+
+		private static bool _servicesInitialized = false;
+
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
 		/// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,18 +44,59 @@ namespace EasyLearner
 		public App()
 		{
 			this.InitializeComponent();
+			SetupLogger();
+			ConfigureServices();
+			DispatcherQueueHelper.SetCurrentThread();
 		}
 
-		/// <summary>
-		/// Invoked when the application is launched.
-		/// </summary>
-		/// <param name="args">Details about the launch request and process.</param>
-		protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+		private void SetupLogger()
 		{
-			m_window = new MainWindow();
-			m_window.Activate();
+#if DEBUG
+			PinvokeWindowMethods.AllocConsole();
+#endif
+			Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose()
+				.WriteTo.Console(theme: AnsiConsoleTheme.Code)
+				.CreateLogger();
 		}
 
-		private Window m_window;
+		private void ConfigureServices()
+		{
+			var services = new ServiceCollection();
+			services.AddSingleton<MainViewModel>();
+			
+			ServiceProvider = services.BuildServiceProvider();
+		}
+		public async Task InitializeServices()
+		{
+			if (_servicesInitialized)
+				return;
+
+			var converterPageVm = ServiceProvider.GetRequiredService<MainViewModel>();
+			await converterPageVm.Initialize();
+
+			_servicesInitialized = true;
+		}
+		protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+		{
+			string[] cmdLaunchArgs = Environment.GetCommandLineArgs();
+
+			if (CheckSecondStart(cmdLaunchArgs) == false)
+				return;
+
+			await InitializeServices();
+			CreateMainWindow();
+
+			await InitWithCommandLineParameters(cmdLaunchArgs);
+		}
+
+		public static void CreateMainWindow()
+		{
+			MainWindow = new MainWindow();
+			MainWindow.Activate();
+			if (_servicesInitialized)
+			{
+				MainWindow.Initialize();
+			}
+		}
 	}
 }

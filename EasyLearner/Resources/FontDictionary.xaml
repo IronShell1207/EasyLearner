@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:AudioConverter.Resources">
+
+	<FontFamily x:Key="InterBlack">ms-appx:///Assets/Fonts/Inter/Inter-Black.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterBold">ms-appx:///Assets/Fonts/Inter/Inter-Bold.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterExtraBold">ms-appx:///Assets/Fonts/Inter/Inter-ExtraBold.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterExtraLight">ms-appx:///Assets/Fonts/Inter/Inter-ExtraLight.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterLight">ms-appx:///Assets/Fonts/Inter/Inter-Light.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterMed">ms-appx:///Assets/Fonts/Inter/Inter-Medium.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterRegular">ms-appx:///Assets/Fonts/Inter/Inter-Regular.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterSemiBold">ms-appx:///Assets/Fonts/Inter/Inter-SemiBold.ttf#Inter</FontFamily>
+	<FontFamily x:Key="InterThin">ms-appx:///Assets/Fonts/Inter/Inter-Thin.ttf#Inter</FontFamily>
+</ResourceDictionary>

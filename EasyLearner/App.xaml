@@ -1,16 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application
-    x:Class="EasyLearner.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EasyLearner">
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
-            </ResourceDictionary.MergedDictionaries>
-            <!-- Other app resources here -->
-        </ResourceDictionary>
-    </Application.Resources>
+	x:Class="EasyLearner.App"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:helpers="using:EasyLearner.Helpers"
+	xmlns:local="using:EasyLearner"
+	RequestedTheme="Dark"
+	xmlns:msConvert="using:CommunityToolkit.WinUI.UI.Converters">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+				<ResourceDictionary Source="/Resources/ColorDictionary.xaml" />
+				<ResourceDictionary Source="/Resources/GeometryIconsDictionary.xaml" />
+				<ResourceDictionary Source="/Resources/ImageDictionary.xaml" />
+				<ResourceDictionary Source="/Resources/FontDictionary.xaml" />
+				<ResourceDictionary Source="/Styles/FlatStylesDictionary.xaml" />
+				<ResourceDictionary Source="/Styles/TextStylesDictionary.xaml" />
+				<ResourceDictionary Source="/Styles/ButtonsStylesDictionary.xaml" />
+				<ResourceDictionary Source="/Styles/GenericStylesDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<helpers:ViewModelLocator x:Key="ViewModelLocator" />
+
+			<msConvert:BoolToObjectConverter x:Key="InvertedVisibilityConverter">
+				<msConvert:BoolToObjectConverter.TrueValue>
+					<Visibility>Collapsed</Visibility>
+				</msConvert:BoolToObjectConverter.TrueValue>
+				<msConvert:BoolToObjectConverter.FalseValue>
+					<Visibility>Visible</Visibility>
+				</msConvert:BoolToObjectConverter.FalseValue>
+			</msConvert:BoolToObjectConverter>
+
+			<msConvert:FormatStringConverter x:Key="DefaultFormatStringConverter" />
+			<msConvert:BoolNegationConverter x:Key="BoolNegationConverter" />
+			<!--  Other app resources here  -->
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>
