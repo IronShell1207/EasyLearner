@@ -1,4 +1,5 @@
 ﻿using EasyLearner.Database;
+using EasyLearner.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Utils.Helpers;
 
@@ -63,7 +64,7 @@ namespace EasyLearner
 		{
 			var services = new ServiceCollection();
 			services.AddSingleton<MainViewModel>();
-
+			services.AddSingleton<NotifyService>();
 			ServiceProvider = services.BuildServiceProvider();
 		}
 
@@ -75,7 +76,8 @@ namespace EasyLearner
 
 			var converterPageVm = ServiceProvider.GetRequiredService<MainViewModel>();
 			await converterPageVm.Initialize();
-
+			var notifySrv = ServiceProvider.GetRequiredService<NotifyService>();
+			notifySrv.Init();
 			_servicesInitialized = true;
 		}
 

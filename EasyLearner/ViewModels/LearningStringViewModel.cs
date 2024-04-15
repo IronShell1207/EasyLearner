@@ -5,22 +5,22 @@ namespace EasyLearner.ViewModels
 	public class LearningStringViewModel : ObservableObject
 	{
 		/// <inheritdoc cref="Description"/>
-		private string _description;
+		private string _description = "";
 
 		/// <inheritdoc cref="IsLearned"/>
-		private bool _isLearned;
+		private bool _isLearned = false;
 
 		/// <inheritdoc cref="LeanedCounter"/>
-		private int _leanedCounter;
+		private int _leanedCounter = 0;
 
 		/// <inheritdoc cref="NotLearnedCounter"/>
-		private int _notLearnedCounter;
+		private int _notLearnedCounter = 0;
 
 		/// <inheritdoc cref="Translate"/>
-		private string _translate;
+		private string _translate = "";
 
 		/// <inheritdoc cref="Value"/>
-		private string _value;
+		private string _value = "";
 
 		/// <summary>
 		/// Инициализирует экземпляр <see cref="LearningStringViewModel"/>.
