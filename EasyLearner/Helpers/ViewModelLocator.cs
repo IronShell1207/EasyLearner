@@ -1,4 +1,7 @@
-﻿namespace EasyLearner.Helpers
+﻿using EasyLearner.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace EasyLearner.Helpers
 {
 	using System;
 	using System.Collections.Generic;
@@ -8,5 +11,6 @@
 
 	internal class ViewModelLocator
 	{
+		public MainViewModel GetMainViewModel => App.ServiceProvider.GetRequiredService<MainViewModel>();
 	}
 }

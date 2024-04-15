@@ -1,4 +1,4 @@
-﻿
+﻿using EasyLearner.Database;
 using Microsoft.Extensions.DependencyInjection;
 using Utils.Helpers;
 
@@ -63,19 +63,22 @@ namespace EasyLearner
 		{
 			var services = new ServiceCollection();
 			services.AddSingleton<MainViewModel>();
-			
+
 			ServiceProvider = services.BuildServiceProvider();
 		}
+
 		public async Task InitializeServices()
 		{
 			if (_servicesInitialized)
 				return;
+			await DbHelper.Initialize();
 
 			var converterPageVm = ServiceProvider.GetRequiredService<MainViewModel>();
 			await converterPageVm.Initialize();
 
 			_servicesInitialized = true;
 		}
+
 		protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
 		{
 			string[] cmdLaunchArgs = Environment.GetCommandLineArgs();

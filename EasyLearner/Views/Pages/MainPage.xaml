@@ -6,13 +6,49 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="using:EasyLearner.Views.Pages"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=GetMainViewModel}"
 	mc:Ignorable="d">
 
-	<Grid >
+	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		<ListView></ListView>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.2*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="0.2*" />
+		</Grid.ColumnDefinitions>
+		<ListView Grid.Column="1" ItemsSource="{Binding LearningStrings}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding Value}" />
+							<TextBlock Text=" - " />
+							<TextBlock Text="{Binding Translate}" />
+						</StackPanel>
+					</Grid>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+		<Grid Grid.Row="1" Grid.Column="1">
+
+			<StackPanel>
+				<TextBox Description="Value" Text="{Binding NewStringValue.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+				<TextBox Description="Translate" Text="{Binding NewStringValue.Translate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+				<TextBox Description="Description" Text="{Binding NewStringValue.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+				<Button
+					HorizontalAlignment="Stretch"
+					Command="{Binding AddStringAsyncCommand}"
+					Style="{StaticResource AppButtonAlignedStyle}">
+					<TextBlock
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Text="Add" />
+				</Button>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </Page>

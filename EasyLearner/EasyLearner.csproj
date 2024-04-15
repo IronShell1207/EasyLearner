@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.22000.0</TargetFramework>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>EasyLearner</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -38,7 +38,7 @@
 	  <PackageReference Include="Microsoft.AppCenter" Version="5.0.3" />
 	  <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.3" />
 	  <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.3" />
-	  <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.3" />
+	  <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.4" />
 
 	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 
