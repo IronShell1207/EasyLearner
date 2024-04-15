@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EasyLearner (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "EasyLearner (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
